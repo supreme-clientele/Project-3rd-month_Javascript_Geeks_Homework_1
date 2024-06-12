@@ -1,5 +1,4 @@
-// Gmail Checker
-
+// GMAIL BLOCK
 const gmailInput = document.querySelector('#gmail_input');
 const gmailButton = document.querySelector('#gmail_button');
 const gmailResult = document.querySelector('#gmail_result');
@@ -20,18 +19,63 @@ gmailButton.onclick = () => {
 }
 
 
-function moveBlock(block, currentPosition, endPosition) {
-    if (currentPosition < endPosition) {
-        currentPosition++;
-        block.style.left = `${currentPosition}px`;
-        requestAnimationFrame(() => moveBlock(block, currentPosition, endPosition));
+// MOVE BLOCK
+const parentBlock = document.querySelector('.parent_block');
+const childBlock = document.querySelector('.child_block');
+
+let positionX = 0, positionY = 0;
+
+const clientParentWidth = parentBlock.clientWidth - childBlock.clientWidth;
+const clientParentHeight = parentBlock.clientHeight - childBlock.clientHeight;
+
+const moveBlock = () => {
+    if (positionX < clientParentWidth && positionY === 0) {
+        positionX++
+        childBlock.style.left = `${positionX}px`
+    } else if (positionX >= clientParentWidth && positionY < clientParentHeight) {
+        positionY++
+        childBlock.style.top = `${positionY}px`
+    } else if (positionY >= clientParentHeight && positionX > 0) {
+        positionX--;
+        childBlock.style.left = `${positionX}px`;
+    } else if (positionX <= 0 && positionY > 0) {
+        positionY--;
+        childBlock.style.top = `${positionY}px`;
+    } 
+
+    requestAnimationFrame(moveBlock);
+};
+
+moveBlock();
+
+
+// STOP WATCH
+let seconds = 0;
+let intervalId;
+
+const secondsElement = document.getElementById('seconds');
+const startButton = document.getElementById('start');
+const stopButton = document.getElementById('stop');
+const resetButton = document.getElementById('reset');
+
+startButton.addEventListener('click', () => {
+    if (!intervalId) {
+        intervalId = setInterval(() => {
+            seconds++;
+            secondsElement.textContent = seconds;
+        }, 1000);
     }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const childBlock = document.querySelector('.child_block');
-    const parentBlock = document.querySelector('.parent_block');
-    const endPosition = parentBlock.clientWidth - childBlock.clientWidth;
-
-    moveBlock(childBlock, 0, endPosition);
 });
+
+stopButton.addEventListener('click', () => {
+    clearInterval(intervalId);
+    intervalId = null;
+});
+
+resetButton.addEventListener('click', () => {
+    clearInterval(intervalId);
+    intervalId = null;
+    seconds = 0;
+    secondsElement.textContent = seconds;
+});
+
