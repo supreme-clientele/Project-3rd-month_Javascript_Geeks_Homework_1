@@ -60,9 +60,9 @@ tabParent.onclick = (event) => {
             if (event.target === item) {
                 hideTabContent();
                 showTabContent(index);
-                currentIndex = index;  // Обновляет currentIndex на индекс нажатого таба
-                stopSlider();          // Останавливает автоматическое переключение
-                startSlider();         // Перезапускает автоматическое переключение
+                currentIndex = index;
+                stopSlider();
+                startSlider();
             };
         });
     };
