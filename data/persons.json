@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Black Meme Kid",
+        "age": 5,
+        "person_photo": "../images/black-kid.jpg"
+    },
+    {
+        "name": "Destroyer",
+        "age": "unknown",
+        "person_photo": "../images/destroyer.webp"
+    },
+    {
+        "name": "Trevor",
+        "age": 46,
+        "person_photo": "../images/trevor.jpg"
+    }
+]

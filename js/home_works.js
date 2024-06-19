@@ -79,3 +79,47 @@ resetButton.addEventListener('click', () => {
     secondsElement.textContent = seconds;
 });
 
+
+// PERSONS CARD
+const personsBlock = document.querySelector('.persons');
+const defaultUserPhoto = '../images/defaultUserPhoto.png'
+
+const requestPersons = new XMLHttpRequest();
+requestPersons.open('GET', '../data/persons.json');
+requestPersons.setRequestHeader('Content-type', 'application/json');
+requestPersons.send();
+
+requestPersons.onload = () => {
+    const personsData = JSON.parse(requestPersons.responseText);
+    console.log(personsData);
+
+    personsData.forEach((person) => {
+        const personCard = document.createElement('div');
+        personCard.classList.add('person-card');
+
+        personCard.innerHTML = `
+        <div class="person-image">
+            <img src="${person.person_photo || defaultUserPhoto}" alt="${person.name}">
+        </div>
+            
+        <h2>${person.name}</h2>
+        <p>age: ${person.age}</p>
+        `;
+
+        personsBlock.append(personCard);
+    });
+};
+
+
+const requestAny = new XMLHttpRequest();
+requestAny.open('GET', '../data/any.json');
+requestAny.setRequestHeader('Content-type', 'application/json');
+requestAny.send();
+
+requestAny.onload = () => {
+    const anyData = JSON.parse(requestAny.responseText);
+    console.log(anyData);
+};
+
+
+    

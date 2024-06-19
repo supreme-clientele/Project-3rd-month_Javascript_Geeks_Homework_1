@@ -1,0 +1,17 @@
+[
+    {
+      "itSchoolName": "Geeks",
+      "description": "​Международная IT-академия",
+      "address": "​БЦ Victory, улица Ибраимова, 103, Бишкек​"
+    },
+    {
+      "itSchoolName": "Attractor",
+      "description": "​Учебный центр, Курсы программирования для взрослых — обучаем профессии с нуля",
+      "address": "Малдыбаева, 7/1​3 этаж"
+    },
+    {
+      "itSchoolName": "Codify Academy",
+      "description": "​Образовательный центр",
+      "address": "1. 7-й микрорайон, 26/2, 2. БЦ Destination Kyrgyzstan, ​улица Насирдина Исанова, 105/3"
+    }
+  ]

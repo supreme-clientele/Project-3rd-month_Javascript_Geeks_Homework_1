@@ -426,3 +426,43 @@
     100% {
     }
 }
+
+/* PERSONS CARDS */
+.persons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.person-card {
+    border: 1px solid;
+    min-width: 250px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.person-card h2 {
+    text-transform: none;
+}
+
+.person-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid;
+    object-fit: cover;
+}
+
+.person-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
