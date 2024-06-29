@@ -49,3 +49,24 @@ setTimeout(() => {
         hasModalBeenShown = true;
     }
 }, 10000);
+
+
+// TELEGRAM BOT
+
+const form = document.querySelector('form')
+const token = '7084352039:AAEJvl54rgRCm3lGR-1wjz7RKpOku1DlMg8'
+const chat_id = '@murat_lesson7'
+const API_URL = `https://api.telegram.org/bot${token}/sendMessage`
+
+form.onsubmit = async (event) => {
+    event.preventDefault()
+
+    const {name, phone} = Object.fromEntries(new FormData(event.target).entries())
+    const text = `имя: ${name}\nномер: ${phone}`
+    
+    await fetch(API_URL, {
+        method: 'POST',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify({chat_id: chat_id, text: text})
+    })
+}
